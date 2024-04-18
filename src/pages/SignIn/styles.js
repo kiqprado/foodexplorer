@@ -1,6 +1,13 @@
 import styled from 'styled-components'
 
-export const Container = styled.div``
+export const Container = styled.div`
+  padding: 0 5.5rem;
 
-export const Field = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+
+  div:nth-child(1) {
+    margin: 10rem 0 3rem;
+  }
 `

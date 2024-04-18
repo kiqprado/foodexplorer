@@ -1,29 +1,42 @@
-import { Container, Field } from './styles'
-import { Title } from '../../components/Title'
+import { Container } from './styles'
+
+import { Logo } from '../../components/Logo'
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 import { ButtonTxt } from '../../components/ButtonTxt'
 
-export function SignIn() {
+export function SignUp() {
   return(
     <Container>
-      <Title/>
+      <Logo
+        title="food explorer"
+      />
 
-      <Field>
-        <Input/>
-      </Field>
+      <Input
+        title="Seu nome"
+        type="text"
+        placeholder="Ex: Maria da Silva"
+      />
 
-      <Field>
-        <Input/>
-      </Field>
+      <Input
+        title="Email"
+        type="email"
+        placeholder="Ex@exemplo.com"
+      />
 
-      <Field>
-        <Input/>
-      </Field>
+      <Input
+        title="Senha"
+        type="password"
+        placeholder="No mínimo 6 caracteres"
+      />
 
-      <Button/>
+      <Button
+        title="Criar conta"
+      />
 
-      <ButtonTxt/>
+      <ButtonTxt
+        title="Já tenho uma conta"
+      />
       
     </Container>
   )

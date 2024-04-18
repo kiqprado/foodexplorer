@@ -7,7 +7,6 @@ export function ButtonTxt({title, isActive = false, ...rest}) {
       $isactive={isActive}
       {...rest}
     >
-      <TiArrowBack/>
       {title}
     </Container>
   )
