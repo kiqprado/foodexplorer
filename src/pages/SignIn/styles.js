@@ -8,6 +8,6 @@ export const Container = styled.div`
   gap: 3.2rem;
 
   div:nth-child(1) {
-    margin: 10rem 0 3rem;
+    margin: 15rem 0 3rem;
   }
 `

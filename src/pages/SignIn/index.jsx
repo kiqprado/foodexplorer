@@ -7,9 +7,7 @@ import { ButtonTxt } from '../../components/ButtonTxt'
 export function SignIn() {
   return(
     <Container>
-      <Logo
-        title="food explorer"
-      />
+      <Logo/>
 
       <Input
         title="Email"
