@@ -6,6 +6,7 @@ import theme from './styles/theme'
 import GlobalStyles from './styles/global'
 
 import { Home } from './pages/Home'
+import { Dish } from './pages/Dish'
 import { SignIn } from './pages/SignIn'
 import { SignUp } from './pages/SignUp'
 

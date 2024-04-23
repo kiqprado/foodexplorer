@@ -1,23 +1,18 @@
-import { PiReceipt, PiList } from "react-icons/pi";
+import { PiMinus, PiPlus } from 'react-icons/pi'
 
 import { Container } from './styles'
-
-import { Logo } from '../Logo'
 import { ButtonIcon } from '../ButtonIcon'
 
-export function Header() {
+export function Quantity() {
   return(
     <Container>
       <ButtonIcon
-        icon={PiList}
+        icon={PiMinus}
       />
-
-      <Logo/>
-
+        <span>01</span>
       <ButtonIcon
-        icon={PiReceipt}
+        icon={PiPlus}
       />
-      
     </Container>
   )
 }

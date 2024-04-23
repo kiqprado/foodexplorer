@@ -1,29 +1,54 @@
-import { Container, List } from './styles'
+import { Container, Content, List, CardAd } from './styles'
 
 import { Header } from '../../components/Header'
 import { Section } from '../../components/Section'
+import { DishItem } from '../../components/DishItem'
+
+import CardImg from '../../assets/CardElements.png'
+
 export function Home() {
   return(
     <Container>
       <Header/>
 
-      <Section
-        title="Refeições"
-      >
+      <main>
+        <Content>
+          <CardAd>
+            <img src={CardImg} alt="" />
+            <div className="about">
+              <h3>Sabores inigualáveis</h3>
+              <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+            </div>
+          </CardAd>
 
-      </Section>
+          <Section
+            title="Refeições"
+          >
+            <List>
+              <DishItem/>
+              <DishItem/>
+            </List>
+          </Section>
 
-      <Section
-        title="Pratos principais"
-      >
+          <Section
+            title="Pratos principais"
+          >
+            <List>
+              <DishItem/>
+              <DishItem/>
+            </List>
+          </Section>
 
-      </Section>
-
-      <Section
-        title="Acompanhamentos"
-      >
-
-      </Section>
+          <Section
+            title="Acompanhamentos"
+          >
+            <List>
+              <DishItem/>
+              <DishItem/>
+            </List>
+          </Section>
+        </Content>
+      </main>
     </Container>
   )
 }

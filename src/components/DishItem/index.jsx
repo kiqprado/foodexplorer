@@ -1,30 +1,35 @@
-import { Container, ButtonBack } from './styles'
+import { PiHeart } from 'react-icons/pi'
 
-export function Dish({data, ...rest}) {
+import { Container } from './styles'
+import { Quantity } from '../../components/Quantity'
+import { Button } from '../../components/Button'
+import { ButtonIcon } from '../../components/ButtonIcon'
+
+import Dish from '../../assets/dish.png'
+
+export function DishItem({ data, ...rest}) {
   return(
     <Container {...rest}>
-      <ButtonBack/>
 
-      <img src={data.image} alt="" />
+      <ButtonIcon
+        icon={PiHeart}
+      />
 
-      <h2>{data.title}</h2>
+      {/*<img src={data.image} alt="" />*/}
+      <img src={Dish} alt="" />
 
-      <p>{data.description}</p>
+      {/*<h3>{data.title}</h3>*/}
+      <h4>Macarrão Macarrão</h4>
 
-      {
-        data.tags &&
-        <div>
-          {
-            data.tags.map(tag => 
-              <Tag
-                key={tag.name}
-                title={tag.name}
-              />
-            )
-          }
-        </div>
-      }
-    
+
+      {/*<span>R$:{data.price}</span>*/}
+      <span>R$: 49,90</span>
+
+      <Quantity/>
+
+      <Button
+        title="incluir"
+      />
     </Container>
   )
 }
