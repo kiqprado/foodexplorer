@@ -1,9 +1,29 @@
-import { Container } from './styles'
+import { Container, List } from './styles'
 
+import { Header } from '../../components/Header'
+import { Section } from '../../components/Section'
 export function Home() {
   return(
     <Container>
-      <h1>Food Explorer</h1>
+      <Header/>
+
+      <Section
+        title="Refeições"
+      >
+
+      </Section>
+
+      <Section
+        title="Pratos principais"
+      >
+
+      </Section>
+
+      <Section
+        title="Acompanhamentos"
+      >
+
+      </Section>
     </Container>
   )
 }
