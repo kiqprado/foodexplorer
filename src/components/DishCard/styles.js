@@ -7,10 +7,10 @@ export const Container = styled.div`
   align-items: center;
   gap: 1.2rem;
   border: 1px solid ${({ theme }) => theme.COLORS.DARK_100};
-  border-radius: .8rem;
+  border-radius: 0.8rem;
   position: relative;
 
-  width: 15rem;
+  width: 18rem;
   height: 24rem;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_200};
@@ -26,8 +26,11 @@ export const Container = styled.div`
     height: 8.8rem;
   }
 
+  > h4 {
+    font-size: 1.4rem;
+  }
+
   > span {
     color: ${({ theme }) => theme.COLORS.CAKE_200};
   }
-
 `

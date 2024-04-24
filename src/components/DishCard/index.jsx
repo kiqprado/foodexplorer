@@ -7,7 +7,7 @@ import { ButtonIcon } from '../../components/ButtonIcon'
 
 import Dish from '../../assets/dish.png'
 
-export function DishItem({ data, ...rest}) {
+export function DishCard({ data, ...rest}) {
   return(
     <Container {...rest}>
 
@@ -18,7 +18,7 @@ export function DishItem({ data, ...rest}) {
       {/*<img src={data.image} alt="" />*/}
       <img src={Dish} alt="" />
 
-      {/*<h3>{data.title}</h3>*/}
+      {/*<h4>{data.title}</h4>*/}
       <h4>Macarrão Macarrão</h4>
 
 
