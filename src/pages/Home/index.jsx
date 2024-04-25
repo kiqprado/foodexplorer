@@ -2,7 +2,7 @@ import { Container, Content, List, CardAd } from './styles'
 
 import { Header } from '../../components/Header'
 import { Section } from '../../components/Section'
-import { DishItem } from '../../components/DishItem'
+import { DishCard } from '../../components/DishCard'
 
 import CardImg from '../../assets/CardElements.png'
 
@@ -25,8 +25,8 @@ export function Home() {
             title="Refeições"
           >
             <List>
-              <DishItem/>
-              <DishItem/>
+              <DishCard/>
+              <DishCard/>
             </List>
           </Section>
 
@@ -34,8 +34,8 @@ export function Home() {
             title="Pratos principais"
           >
             <List>
-              <DishItem/>
-              <DishItem/>
+              <DishCard/>
+              <DishCard/>
             </List>
           </Section>
 
@@ -43,8 +43,8 @@ export function Home() {
             title="Acompanhamentos"
           >
             <List>
-              <DishItem/>
-              <DishItem/>
+              <DishCard/>
+              <DishCard/>
             </List>
           </Section>
         </Content>

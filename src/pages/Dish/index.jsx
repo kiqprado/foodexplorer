@@ -1,9 +1,8 @@
+import { Link } from 'react-router-dom'
+
 import { Container } from './stytles'
-
 import dish from '../../assets/dish.png'
-
 import { Header } from '../../components/Header'
-import { ButtonBack } from '../../components/ButtonBack'
 
 export function Dish({data}) {
   return(
@@ -11,7 +10,10 @@ export function Dish({data}) {
       <Header/>
 
       <main>
-        <ButtonBack/>
+        
+        <Link to="/">
+          &lt; voltar
+        </Link>
 
         <img src={dish} alt="" />
 

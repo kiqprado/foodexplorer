@@ -32,25 +32,26 @@ export const List = styled.ul`
 
 export const CardAd = styled.div`
   display: flex;
-  margin: 1.6rem;
+  margin: 0 1.6rem 0 3rem;
   padding: 3rem 2rem 2rem 0;
 
-  border-radius: .3rem;
+  border-radius: 0.3rem;
 
   position: relative;
 
   > img {
-    height: 14.9rem;
+    height: 14.3rem;
     position: absolute;
     z-index: 1;
     bottom: 0;
+    left: -2.4rem;
   }
 
   .about {
     display: flex;
     flex-direction: column;
     margin-left: 15rem;
-    gap: .6rem;
+    gap: 0.6rem;
 
     h3 {
       font-size: 1.8rem;
