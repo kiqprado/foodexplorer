@@ -2,10 +2,9 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
-  align-items: center;
+  align-items: center; 
 
-  margin: 1rem 0 1rem 1.6rem;
-
+  padding: 1.2rem;
   border-radius: 0.8rem;
 
   background-color: ${({ theme, isNew }) =>
@@ -29,8 +28,7 @@ export const Container = styled.div`
   }
 
   > input {
-    width: 100%;
-    padding: 1.2rem;
+    width: fit-content;
 
     border: none;
     color: ${({ theme }) => theme.COLORS.LIGHT_100};

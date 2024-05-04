@@ -1,34 +1,45 @@
-import { Container } from './styles'
+import { Link } from 'react-router-dom'
+
+import { Container, Form } from './styles'
 import { Logo } from '../../components/Logo'
+import { InputLabel } from '../../components/InputLabel'
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
-import { ButtonTxt } from '../../components/ButtonTxt'
 
 export function SignIn() {
   return(
     <Container>
-      <Logo/>
+      <Form>
+        <Logo/>
 
-      <Input
-        title="Email"
-        placeholder="Ex@exemplo.com"
-        type="email"
-      />
+        <InputLabel
+          title="Email"
+          htmlFor="emailInput"
+        />
+        <Input
+          id="emailInput"
+          placeholder="Ex@exemplo.com"
+          type="email"
+        />
 
-      <Input
-        title="Senha"
-        placeholder="No mínimo 6 caracteres"
-        type="password"
-      />
+        <InputLabel
+          title="Senha"
+          htmlFor="passwordInput"
+        />
+        <Input
+          id="passwordInput"
+          placeholder="No mínimo 6 caracteres"
+          type="password"
+        />
 
-      <Button
-        title="Entrar"
-      />
+        <Button
+          title="Entrar"
+        />
 
-      <ButtonTxt
-        title="Criar uma conta"
-      />
-      
+        <Link to="/register">
+          Criar uma conta
+        </Link>
+      </Form>
     </Container>
   )
 }
