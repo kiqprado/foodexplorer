@@ -7,7 +7,6 @@ export const Container = styled.div`
   align-items: center;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_900};
-  color: ${({ theme }) => theme.COLORS.LIGHT_500};
 
   border-radius: 0.8rem;
 
@@ -19,7 +18,7 @@ export const Container = styled.div`
     width: 100%;
     padding: 1.6rem 1.4rem;
 
-    color: ${({ theme }) => theme.COLORS.WHITE};
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
     background: transparent;
     border: none;
     border-radius: 0.8rem;
@@ -27,7 +26,7 @@ export const Container = styled.div`
     outline: none;
 
     &:placeholder {
-      color: ${({ theme }) => theme.COLORS.GRAY_300};
+      color: ${({ theme }) => theme.COLORS.LIGHT_500};
     }
   }
 `

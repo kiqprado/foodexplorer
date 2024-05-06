@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   padding: 0 5.5rem;
 
-  div:nth-child(1) {
+  a:nth-child(1) {
     margin: 15rem 0 3rem;
   }
 
