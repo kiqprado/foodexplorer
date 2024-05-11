@@ -1,5 +1,4 @@
 import { Container, Content, List, CardAd } from './styles'
-
 import { Header } from '../../components/Header'
 import { Section } from '../../components/Section'
 import { DishCard } from '../../components/DishCard'
@@ -7,6 +6,7 @@ import { DishCard } from '../../components/DishCard'
 import CardImg from '../../assets/CardElements.png'
 
 export function Home() {
+
   return(
     <Container>
       <Header/>
