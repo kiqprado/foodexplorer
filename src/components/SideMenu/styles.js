@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.aside`
+  width: 100%;
+  height: 100vh;
   position: absolute;
   top: 0rem;
   left: 0rem;
@@ -23,7 +25,7 @@ export const Container = styled.aside`
 
 export const Header = styled.header`
   display: flex;
-  width: 100%;
+  align-items: center;
   gap: 1.6rem;
   padding: 4.4rem 2.4rem 2rem;
 
@@ -32,5 +34,12 @@ export const Header = styled.header`
 `
 
 export const Content = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.6rem;
+
+  .line {
+    padding: 1rem;
+    border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
+  }
 `

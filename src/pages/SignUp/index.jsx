@@ -38,7 +38,9 @@ export function SignUp() {
   return(
     <Container>
       <Form>
-        <Logo/>
+        <Logo
+          size={38}
+        />
 
         <InputLabel
           title="Seu nome"

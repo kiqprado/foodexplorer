@@ -25,7 +25,9 @@ export function Header() {
         icon={PiList}
       />
 
-      <Logo/>
+      <Logo
+        size={22}
+      />
 
       <ButtonIcon
         icon={PiReceipt}

@@ -21,7 +21,9 @@ export function SignIn() {
   return(
     <Container>
       <Form>
-        <Logo/>
+        <Logo
+          size={38}
+        />
 
         <InputLabel
           title="Email"

@@ -1,10 +1,13 @@
-import { PiX, PiMagnifyingGlass } from 'react-icons/pi'
+import { useAuth } from '../../hooks/auth'
 
+import { PiX, PiMagnifyingGlass } from 'react-icons/pi'
 import { ButtonIcon } from '../ButtonIcon'
 import { Input } from '../Input'
 import { Container, Header, Content } from './styles'
 
 export function SideMenu({ menuIsOpen, closeMenu }) {
+  const { signOut } = useAuth()
+
   return(
     <Container data-menu-is-open={menuIsOpen}>
       <Header>
@@ -21,7 +24,9 @@ export function SideMenu({ menuIsOpen, closeMenu }) {
             placeholder="Busque por pratos ou ingredientes"
           />
 
-          <a href="#">Sair</a>
+          <div className="line">
+            <a href="#" onClick={signOut}>Sair</a>
+          </div>
         </Content>
       </main>
 
