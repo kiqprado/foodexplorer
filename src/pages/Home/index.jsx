@@ -1,3 +1,6 @@
+import { useState, useEffect } from 'react';
+import { api } from '../../services/api'
+
 import { Container, Content, List, CardAd } from './styles'
 import { Header } from '../../components/Header'
 import { Section } from '../../components/Section'
@@ -6,10 +9,45 @@ import { DishCard } from '../../components/DishCard'
 import CardImg from '../../assets/CardElements.png'
 
 export function Home() {
+  const [ categories, setCategories ] = useState([])
+
+  const [favorite, setFavorite] = useState([])
+
+  const [ search, setSearch ] = useState("")
+  const [ dishes, setDishes ] = useState([])
+
+  function handleFavoritesList(newFavorite) {
+    const alreadyFavorite = favorite.includes(newFavorite)
+
+    if (alreadyFavorite) {
+      const filteredFavorite = newFavorite.filter(fav => fav !== newFavorite)
+      setFavorite(filteredFavorite)
+    }else {
+    setFavorite(prevState => [...prevState, newFavorite])
+    }
+  }
+
+  /*useEffect(() => {
+    async function fetchCategories() {
+      const response = await api.get("/category")
+      setCategories(response.data)
+    }
+
+    fetchCategories()
+  }, []) */
+
+  useEffect(() => {
+    async function fetchDishes() {
+      const response = await api.get(`/dishes?title=${search}`)
+      setDishes(response.data)
+    }
+
+    fetchDishes()
+  }, [search])
 
   return(
     <Container>
-      <Header/>
+      <Header setSearch={setSearch}/>
 
       <main>
         <Content>
@@ -24,28 +62,14 @@ export function Home() {
           <Section
             title="Refeições"
           >
-            <List>
-              <DishCard/>
-              <DishCard/>
-            </List>
-          </Section>
-
-          <Section
-            title="Pratos principais"
-          >
-            <List>
-              <DishCard/>
-              <DishCard/>
-            </List>
-          </Section>
-
-          <Section
-            title="Acompanhamentos"
-          >
-            <List>
-              <DishCard/>
-              <DishCard/>
-            </List>
+            {
+            dishes.map(dish => (
+              <DishCard
+                key={String(dish.id)}
+                data={dish}
+              />
+            )) 
+            }
           </Section>
         </Content>
       </main>

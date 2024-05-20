@@ -1,12 +1,19 @@
+import { useState, useEffect } from 'react'
 import { useAuth } from '../../hooks/auth'
+import { api } from '../../services/api'
 
 import { PiX, PiMagnifyingGlass } from 'react-icons/pi'
 import { ButtonIcon } from '../ButtonIcon'
 import { Input } from '../Input'
 import { Container, Header, Content } from './styles'
 
-export function SideMenu({ menuIsOpen, closeMenu }) {
+export function SideMenu({ menuIsOpen, closeMenu, onSearch }) {
   const { signOut } = useAuth()
+
+  function handleSearchChange(e) {
+    const searchEvent = e.target.value
+    onSearch(searchEvent)
+  }
 
   return(
     <Container data-menu-is-open={menuIsOpen}>
@@ -22,6 +29,7 @@ export function SideMenu({ menuIsOpen, closeMenu }) {
           <Input
             icon={PiMagnifyingGlass}
             placeholder="Busque por pratos ou ingredientes"
+            onChange={handleSearchChange}
           />
 
           <div className="line">

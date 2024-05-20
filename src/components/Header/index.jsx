@@ -6,7 +6,7 @@ import { ButtonIcon } from '../ButtonIcon'
 import { SideMenu } from '../SideMenu'
 import { Container } from './styles'
 
-export function Header() {
+export function Header({ setSearch }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -18,6 +18,7 @@ export function Header() {
       <SideMenu
         menuIsOpen={isMenuOpen} 
         closeMenu={() => setIsMenuOpen(false)}
+        onSearch={setSearch}
       />
 
       <ButtonIcon 
