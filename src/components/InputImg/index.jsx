@@ -4,7 +4,7 @@ import { Container } from './styles'
 
 export function InputImg({ title, ...rest}) {
   return(
-    <Container {...rest}>
+    <Container >
       <label htmlFor="imageDish">
         <PiUploadSimple/>
         {title}
@@ -12,6 +12,7 @@ export function InputImg({ title, ...rest}) {
           id="imageDish"
           type="file"
           title={title}
+          {...rest}
         />
       </label>
     </Container>

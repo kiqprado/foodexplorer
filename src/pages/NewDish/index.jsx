@@ -48,18 +48,25 @@ async function handleNewDish() {
     alert("Informe o valor do seu Prato.")
   }
 
-  await api.post("/dishes", {
-    avatar,
-    title,
-    name: category,
-    ingredients,
-    price,
-    description
-  })
+  if(avatar) {
+    const fileUploadForm = new FormData()
+    fileUploadForm.append('avatar', avatar)
 
-  
-  alert("Prato cadastrado com sucesso!")
-  navigate('/')
+    const response = await api.patch('/dishes/avatar', fileUploadForm)
+    const avatarFilename = response.data.filename
+
+    await api.post("/dishes", {
+      title,
+      name: category,
+      ingredients,
+      price,
+      description,
+      avatar: avatarFilename
+    })
+
+    alert("Prato cadastrado com sucesso!")
+    navigate('/')
+  }
 }
 
   return(
@@ -80,6 +87,7 @@ async function handleNewDish() {
           />
           <InputImg
             title="Selecione a imagem"
+            onChange={e => setAvatar(e.target.files[0])}
           />
           </div>
 

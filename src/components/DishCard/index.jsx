@@ -1,3 +1,5 @@
+import { api } from '../../services/api'
+
 import { PiHeart } from 'react-icons/pi'
 
 import { Container } from './styles'
@@ -5,7 +7,11 @@ import { Quantity } from '../../components/Quantity'
 import { Button } from '../../components/Button'
 import { ButtonIcon } from '../../components/ButtonIcon'
 
+import dishPlaceholder from '../../assets/dishPlaceholder.svg'
+
+
 export function DishCard({ data, ...rest}) {
+  const dishAvatar = data.avatar ? `${api.defaults.baseURL}/files/${data.avatar}` : dishPlaceholder
 
   return(
     <Container {...rest}>
@@ -14,7 +20,7 @@ export function DishCard({ data, ...rest}) {
         icon={PiHeart}
       />
 
-      <img src={data.avatar} alt="" />
+      <img src={dishAvatar} alt="" />
 
       <h4>{data.title}</h4>
 

@@ -4,7 +4,7 @@ import { Container } from './styles'
 
 export function DishStuff({ isNew, value, onClick, ...rest }) {
   return(
-    <Container isNew={isNew}>
+    <Container $isnew={isNew}>
       <input
         type="text"
         value={value}
