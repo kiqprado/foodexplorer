@@ -2,19 +2,22 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
-  align-items: center; 
+  align-items: center;
 
-  padding: 1.2rem;
+  padding: 0.8rem 1.6rem;
   border-radius: 0.8rem;
 
-  background-color: ${({ theme, isNew }) =>
-    isNew ? 'transparent' : theme.COLORS.LIGHT_600};
-  color: ${({ theme, isNew }) =>
-    isNew ? theme.COLORS.LIGHT_500 : theme.COLORS.LIGHT_100};
-  border: ${({ theme, isNew }) =>
-    isNew ? `1px dashed ${theme.COLORS.LIGHT_500}` : 'none'};
+  background-color: ${({ theme, $isnew }) =>
+    $isnew ? 'transparent' : theme.COLORS.LIGHT_600};
+  color: ${({ theme, $isnew }) =>
+    $isnew ? theme.COLORS.LIGHT_500 : theme.COLORS.LIGHT_100};
+  border: ${({ theme, $isnew }) =>
+    $isnew ? `1px dashed ${theme.COLORS.LIGHT_500}` : 'none'};
 
   > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     background: none;
   }
@@ -28,12 +31,12 @@ export const Container = styled.div`
   }
 
   > input {
-    width: fit-content;
-
+    width: 6.8rem;
     border: none;
-    color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    background: transparent;
     outline: none;
+
+    background: transparent;
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
     &::placeholder {
       color: ${({ theme }) => theme.COLORS.LIGHT_500};

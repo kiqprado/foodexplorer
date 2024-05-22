@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react'
 import { useAuth } from '../../hooks/auth'
-import { api } from '../../services/api'
 
 import { PiX, PiMagnifyingGlass } from 'react-icons/pi'
 import { ButtonIcon } from '../ButtonIcon'

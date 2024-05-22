@@ -1,22 +1,17 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  position: relative;
-  margin-bottom: 4.8rem;
-  
+  width: 100%;
+  border-radius: 0.8rem;
+  cursor: pointer;
+
+  background-color: ${({ theme }) => theme.COLORS.DARK_800};
+
   > label {
-    position: absolute;
-    width: 100%;
     display: flex;
     align-items: center;
-
-    cursor: pointer;
-    font-size: 1.4rem;
-
     padding: 1.2rem 1.4rem;
-
-    border-radius: 0.8rem;
-    background-color: ${({ theme }) => theme.COLORS.DARK_800};
+    font-size: 1.4rem;
 
     input {
       display: none;

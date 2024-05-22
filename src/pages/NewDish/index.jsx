@@ -2,11 +2,14 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
 
+import { PiCaretDown, PiCaretLeft} from 'react-icons/pi'
+
 import { Container, Form, StuffTags } from './styles'
 import { Header } from '../../components/Header'
 import { Input } from '../../components/Input'
 import { InputImg } from '../../components/InputImg'
 import { InputLabel } from '../../components/InputLabel'
+import { InputSelect } from '../../components/InputSelect'
 import { DishStuff } from '../../components/DishStuff'
 import { Textarea } from '../../components/Textarea'
 import { Button } from '../../components/Button'
@@ -38,9 +41,9 @@ async function handleNewDish() {
   if(!title) {
     alert("Os Pratos devem possuir um Nome para serem adicionados ao catalogo.")
   }
-  if(!category) {
+  /*if(!category) {
     alert("A categoria do produto deve ser informada!")
-  }
+  }*/
   if(newIngredient) {
     alert("Existe um ingrediente no campo preenchido mas não adicionado a lista, adicione ou exclua o mesmo.")
   }
@@ -74,7 +77,7 @@ async function handleNewDish() {
       <Header/>
       <main> 
         <Link to="/">
-          &lt; voltar
+           <PiCaretLeft/> voltar
         </Link> 
         <Form>  
 
@@ -109,10 +112,10 @@ async function handleNewDish() {
             title="Categoria"
             htmlFor="dishCategory"
           />
-          <Input
+          <InputSelect
             id="dishCategory"
             type="text"
-            placeholder="Ex: Salada Ceasar"
+            icon={PiCaretDown}
             onChange={e => setCategory(e.target.value)}
           />
           </div>
@@ -134,7 +137,7 @@ async function handleNewDish() {
 
             <DishStuff
               isNew
-              placeholder="Ain Zé da MANGA"
+              placeholder="Adicionar"
               value={newIngredient}
               onChange={e => setNewIngredient(e.target.value)}
               onClick={handleAddIngredient}
@@ -150,7 +153,7 @@ async function handleNewDish() {
           <Input
             id="dishPrice"
             type="number"
-            placeholder="R$: 49,90"
+            placeholder="R$ 00,00"
             onChange={e => setPrice(e.target.value)}
           />
           </div>
