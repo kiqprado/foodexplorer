@@ -60,7 +60,7 @@ async function handleNewDish() {
 
     await api.post("/dishes", {
       title,
-      name: category,
+      category_name: category,
       ingredients,
       price,
       description,

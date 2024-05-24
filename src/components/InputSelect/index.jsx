@@ -1,15 +1,15 @@
 
 import { Container, Select } from './styles'
 
-export function InputSelect({ icon: Icon }) {
+export function InputSelect({ icon: Icon, onChange }) {
   return(
     <Container>
       {Icon && <Icon size={24}/>}
-      <Select>
-        <option value="meals">Refeições</option>
-        <option value="dishes">Pratos principais</option>
-        <option value="assistance">Acompanhamentos</option>
-        <option value="desserts">Sobremesas</option>
+      <Select onChange={onChange}>
+        <option value="Refeições">Refeições</option>
+        <option value="Pratos principais">Pratos principais</option>
+        <option value="Acompanhamentos">Acompanhamentos</option>
+        <option value="Sobremesas">Sobremesas</option>
       </Select>
     </Container>
 
