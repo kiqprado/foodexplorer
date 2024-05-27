@@ -14,7 +14,7 @@ export function Home() {
   const [favorite, setFavorite] = useState([])
 
   const [ search, setSearch ] = useState("")
-  const [ dishes, setDishes ] = useState([])
+  const [dishesByCategory, setDishesByCategory] = useState({})
 
   function handleFavoritesList(newFavorite) {
     const alreadyFavorite = favorite.includes(newFavorite)
@@ -27,23 +27,31 @@ export function Home() {
     }
   }
 
-  /*useEffect(() => {
+  useEffect(() => {
     async function fetchCategories() {
       const response = await api.get("/category")
       setCategories(response.data)
     }
 
     fetchCategories()
-  }, []) */
+  }, [])
 
   useEffect(() => {
     async function fetchDishes() {
-      const response = await api.get(`/dishes?title=${search}`)
-      setDishes(response.data)
+      const dishesByCategory = {}
+
+      for (const category of categories) {
+        const response = await api.get(`/dishes?title=${search}&category_id=${category.id}`)
+        dishesByCategory[category.id] = response.data
+      }
+
+      setDishesByCategory(dishesByCategory)
     }
 
-    fetchDishes()
-  }, [search])
+    if (categories.length > 0) {
+      fetchDishes()
+    }
+  }, [search, categories])
 
   return(
     <Container>
@@ -59,18 +67,16 @@ export function Home() {
             </div>
           </CardAd>
 
-          <Section
-            title="Refeições"
-          >
-            {
-            dishes.map(dish => (
-              <DishCard
-                key={String(dish.id)}
-                data={dish}
-              />
-            )) 
-            }
-          </Section>
+          {categories.map(category => (
+            <Section key={category.id} title={category.name}>
+              {(dishesByCategory[category.id] || []).map(dish => (
+                <DishCard
+                  key={String(dish.id)}
+                  data={dish}
+                />
+              ))}
+            </Section>
+          ))}
         </Content>
       </main>
     </Container>

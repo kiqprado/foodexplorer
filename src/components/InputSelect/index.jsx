@@ -5,11 +5,12 @@ export function InputSelect({ icon: Icon, onChange }) {
   return(
     <Container>
       {Icon && <Icon size={24}/>}
-      <Select onChange={onChange}>
+      <Select defaultValue="" onChange={onChange}>
+        <option value="" disabled hidden>Selecione a categoria</option>
         <option value="Refeições">Refeições</option>
-        <option value="Pratos principais">Pratos principais</option>
-        <option value="Acompanhamentos">Acompanhamentos</option>
         <option value="Sobremesas">Sobremesas</option>
+        <option value="Bebidas">Bebidas</option>
+        <option value="Acompanhamentos">Acompanhamentos</option>
       </Select>
     </Container>
 
