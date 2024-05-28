@@ -5,13 +5,15 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 1.2rem;
+
   border: 1px solid ${({ theme }) => theme.COLORS.DARK_100};
   border-radius: 0.8rem;
   position: relative;
 
-  width: 18rem;
-  height: 24rem;
+  width: 21rem;
+  height: 29.2rem;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_200};
 
@@ -21,9 +23,15 @@ export const Container = styled.div`
     right: 1.6rem;
   }
 
+  > :last-child {
+    margin-top: 0.6rem;
+  }
+
   > img {
-    width: 8.8rem;
-    height: 8.8rem;
+    width: 12rem;
+    height: 12rem;
+
+    object-fit: cover;
   }
 
   > h4 {

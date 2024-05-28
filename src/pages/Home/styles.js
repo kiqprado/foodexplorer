@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Swiper as ReactSwiper } from 'swiper/react'
 
 export const Container = styled.div`
   width: 100%;
@@ -13,11 +14,11 @@ export const Container = styled.div`
   > main {
     grid-area: content;
     overflow-y: auto;
-    padding: 4.4rem 0;
   }
 `
 
 export const Content = styled.div`
+  padding: 0 2.4rem 2.4rem;
   margin: 0 auto;
 
   display: flex;
@@ -25,14 +26,9 @@ export const Content = styled.div`
   gap: 2.4rem;
 `
 
-export const List = styled.ul`
-  display: flex;
-  gap: 1.6rem;
-`
-
 export const CardAd = styled.div`
   display: flex;
-  margin: 0 1.6rem 0 3rem;
+  margin: 4.4rem 1.6rem 6.2rem;
   padding: 3rem 2rem 2rem 0;
 
   border-radius: 0.3rem;
@@ -69,4 +65,41 @@ export const CardAd = styled.div`
     rgba(6, 23, 30, 1) 50%,
     rgba(8, 24, 30, 1) 100%
   );
+`
+
+export const CustomSwiper = styled(ReactSwiper)`
+  width: 100%;
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 30rem;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    .swiper-3d .swiper-slide-shadow-left {
+      background-image: none;
+    }
+
+    .swiper-3d .swiper-slide-shadow-right {
+      background-image: none;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    background: ${({ theme }) => theme.COLORS.PRIMARY};
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: ${({ theme }) => theme.COLORS.PRIMARY};
+  }
 `

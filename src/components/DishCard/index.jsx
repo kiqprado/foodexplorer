@@ -11,6 +11,7 @@ import dishPlaceholder from '../../assets/dishPlaceholder.svg'
 
 
 export function DishCard({ data, ...rest}) {
+  
   const dishAvatar = data.avatar ? `${api.defaults.baseURL}/files/${data.avatar}` : dishPlaceholder
 
   return(
@@ -25,7 +26,7 @@ export function DishCard({ data, ...rest}) {
       <h4>{data.title}</h4>
 
 
-      <span>R$:{data.price}</span>
+      <span>R$ {data.price}</span>
 
       <Quantity/>
 
