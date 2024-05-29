@@ -7,8 +7,17 @@ export const Container = styled(Link)`
   gap: 0.8rem;
 
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
-  
-  ${({ size }) =>
+
+  img {
+    width: ${({ size }) => size}px;
+    height: ${({ size }) => size}px;
+  }
+
+  h1 {
+    font-size: ${({ size }) => size}px;
+  }
+
+  /*${({ size }) =>
     size &&
     `
       img {
@@ -19,5 +28,5 @@ export const Container = styled(Link)`
       h1 {
         font-size: ${size}px;
       }
-    `}
+    `}*/
 `

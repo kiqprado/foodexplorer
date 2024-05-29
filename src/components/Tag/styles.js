@@ -5,5 +5,5 @@ export const Container = styled.span`
   padding: 0.4rem 0.8rem;
 
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
-  background-color: ${({ theme }) => theme.COLORS.DAR_1000};
+  background-color: ${({ theme }) => theme.COLORS.DARK_1000};
 `

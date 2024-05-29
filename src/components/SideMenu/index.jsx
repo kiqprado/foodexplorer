@@ -3,6 +3,7 @@ import { useAuth } from '../../hooks/auth'
 import { PiX, PiMagnifyingGlass } from 'react-icons/pi'
 import { ButtonIcon } from '../ButtonIcon'
 import { Input } from '../Input'
+import { Footer } from '../Footer'
 import { Container, Header, Content } from './styles'
 
 export function SideMenu({ menuIsOpen, closeMenu, onSearch }) {
@@ -36,7 +37,7 @@ export function SideMenu({ menuIsOpen, closeMenu, onSearch }) {
         </Content>
       </main>
 
-      
+      <Footer/>
     </Container>
   )
 }

@@ -21,7 +21,7 @@ export function DishCard({ data, ...rest}) {
         icon={PiHeart}
       />
 
-      <img src={dishAvatar} alt="" />
+      <img src={dishAvatar} alt={data.title} />
 
       <h4>{data.title}</h4>
 

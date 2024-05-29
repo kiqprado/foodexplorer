@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { api } from '../../services/api'
 
 import {  SwiperSlide } from 'swiper/react'
-import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
+import { EffectCoverflow, Navigation } from 'swiper/modules';
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
 
 import { Container, Content, CardAd, CustomSwiper  } from './styles'
 import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
 import { Section } from '../../components/Section'
 import { DishCard } from '../../components/DishCard'
 
@@ -22,8 +24,9 @@ export function Home() {
   const [ search, setSearch ] = useState("")
   const [dishesByCategory, setDishesByCategory] = useState({})
 
+  const navigate = useNavigate()
 
-  function handleFavoritesList(newFavorite) {
+  /*function handleFavoritesList(newFavorite) {
     const alreadyFavorite = favorite.includes(newFavorite)
 
     if (alreadyFavorite) {
@@ -32,6 +35,10 @@ export function Home() {
     }else {
     setFavorite(prevState => [...prevState, newFavorite])
     }
+  }*/
+
+  function handleDetails(id) {
+    navigate(`/details/${id}`)
   }
 
   useEffect(() => {
@@ -98,6 +105,7 @@ export function Home() {
                     <DishCard
                       key={String(dish.id)}
                       data={dish}
+                      onClick={() => handleDetails(dish.id)}
                     />
                   </SwiperSlide>
                 ))}
@@ -106,6 +114,8 @@ export function Home() {
           ))}
         </Content>
       </main>
+
+      <Footer/>
     </Container>
   )
 }

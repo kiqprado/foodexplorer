@@ -1,45 +1,69 @@
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../../services/api'
 import { Link } from 'react-router-dom'
 
-import { Container } from './stytles'
+import { PiCaretLeft} from 'react-icons/pi'
+
+import { Container, Ingredients, OrderDetails } from './stytles'
 import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
+import { Tag } from '../../components/Tag'
+import { Quantity } from '../../components/Quantity'
+import { Button } from '../../components/Button'
 
 import dishPlaceholder from '../../assets/dishPlaceholder.svg'
 
-export function Dish({ data, ...rest}) {
-  const dishAvatar = data.avatar ? `${api.defaults.baseURL}/files/${data.avatar}` : dishPlaceholder
+export function Dish() {
+  const [data, setData] = useState(null);
 
-  return(
-    <Container {...rest}>
-      <Header/>
+  const params = useParams();
+  const navigate = useNavigate();
 
-      <main>
-        
-        <Link to="/">
-          &lt; voltar
+  const dishAvatar = data && data.avatar_url ? data.avatar_url : dishPlaceholder;
+
+  function handleBack() {
+    navigate(-1);
+  }
+
+  useEffect(() => {
+    async function fetchDish() {
+      const response = await api.get(`/dishes/${params.id}`);
+      setData(response.data);
+    }
+
+    fetchDish();
+  }, [params.id]);
+
+  return (
+    <Container>
+      <Header />
+      {
+        data &&
+        <main>
+          <Link to="/">
+           <PiCaretLeft/> voltar
         </Link>
-
-        <img src={dishAvatar} alt={data.title} />
-
-        <h1>{data.title}</h1>
-
-        <p>{data.description}</p>
-        {
-          data.tags &&
-          <div>
-              {
-                data.tags.map(tag => (
-                  <Tag 
-                    key={String(tag.id)}
-                    title={tag.name}
-                  />
-                ))
-              }
-          </div>
-        }
-      </main>
-      
+          <img src={dishAvatar} alt={data.title} />
+          <h1>{data.title}</h1>
+          <p>{data.description}</p>
+          {
+            data.ingredients &&
+            <Ingredients>
+              {data.ingredients.map(ingredient => (
+                <Tag key={String(ingredient.id)} title={ingredient.name} />
+              ))}
+            </Ingredients>
+          }
+          <OrderDetails>
+            <Quantity/>
+            <Button
+              title="Pedir"
+            />
+          </OrderDetails>
+        </main>
+      }
+      <Footer/>
     </Container>
-
-  )
+  );
 }

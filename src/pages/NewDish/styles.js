@@ -4,8 +4,16 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
 
+  display: grid;
+  grid-template-rows: 10rem auto 7.7rem;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+
   > main {
     padding: 0 3.2rem 5.3rem;
+    grid-area: content;
 
     a {
       svg {

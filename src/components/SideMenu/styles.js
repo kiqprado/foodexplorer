@@ -1,8 +1,14 @@
 import styled from 'styled-components'
 
 export const Container = styled.aside`
+  display: grid;
+  grid-template-rows: 10rem auto 7.7rem;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+
   width: 100%;
-  height: 100vh;
   position: absolute;
   top: 0rem;
   left: 0rem;
@@ -11,6 +17,7 @@ export const Container = styled.aside`
 
   main {
     padding: 3.6rem 2.8rem;
+    grid-area: content;
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
   }
 

@@ -6,6 +6,7 @@ import { PiCaretDown, PiCaretLeft} from 'react-icons/pi'
 
 import { Container, Form, StuffTags } from './styles'
 import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
 import { Input } from '../../components/Input'
 import { InputImg } from '../../components/InputImg'
 import { InputLabel } from '../../components/InputLabel'
@@ -75,6 +76,7 @@ async function handleNewDish() {
   return(
     <Container>
       <Header/>
+      
       <main> 
         <Link to="/">
            <PiCaretLeft/> voltar
@@ -176,7 +178,8 @@ async function handleNewDish() {
           />
       </Form>
       </main>
-      
+
+      <Footer/>
     </Container>
   )
 }
