@@ -1,9 +1,11 @@
 import { useAuth } from '../../hooks/auth'
 
 import { PiX, PiMagnifyingGlass } from 'react-icons/pi'
+
 import { ButtonIcon } from '../ButtonIcon'
 import { Input } from '../Input'
 import { Footer } from '../Footer'
+
 import { Container, Header, Content } from './styles'
 
 export function SideMenu({ menuIsOpen, closeMenu, onSearch }) {
@@ -17,7 +19,8 @@ export function SideMenu({ menuIsOpen, closeMenu, onSearch }) {
   return(
     <Container data-menu-is-open={menuIsOpen}>
       <Header>
-        <ButtonIcon onClick={closeMenu}
+        <ButtonIcon 
+          onClick={closeMenu}
           icon={PiX}
         />
         <h3>Menu</h3>

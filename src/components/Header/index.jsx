@@ -1,16 +1,24 @@
 import { useState } from 'react'
 
 import { PiReceipt, PiList } from "react-icons/pi";
+
 import { Logo } from '../Logo'
 import { ButtonIcon } from '../ButtonIcon'
 import { SideMenu } from '../SideMenu'
+import { OrderClient } from '../OrderClient';
+
 import { Container } from './styles'
 
 export function Header({ setSearch }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isOrderOpen, setIsOrderOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  }
+
+  const toggleOrder = () => {
+    setIsOrderOpen(!isOrderOpen);
   }
 
   return(
@@ -30,7 +38,13 @@ export function Header({ setSearch }) {
         size={22}
       />
 
+      <OrderClient
+        orderIsOpen={isOrderOpen}
+        closeOrder={() => setIsOrderOpen(false)}
+      />
+
       <ButtonIcon
+        onClick={toggleOrder}
         icon={PiReceipt}
       />
       

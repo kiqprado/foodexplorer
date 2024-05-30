@@ -33,7 +33,7 @@ export function Dish() {
     }
 
     fetchDish();
-  }, [params.id]);
+  }, []);
 
   return (
     <Container>
@@ -43,10 +43,12 @@ export function Dish() {
         <main>
           <Link to="/">
            <PiCaretLeft/> voltar
-        </Link>
+          </Link>
+
           <img src={dishAvatar} alt={data.title} />
           <h1>{data.title}</h1>
           <p>{data.description}</p>
+
           {
             data.ingredients &&
             <Ingredients>
@@ -55,6 +57,7 @@ export function Dish() {
               ))}
             </Ingredients>
           }
+          
           <OrderDetails>
             <Quantity/>
             <Button
