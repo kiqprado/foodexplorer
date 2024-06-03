@@ -33,6 +33,10 @@ export function SideMenu({ menuIsOpen, closeMenu, onSearch }) {
             placeholder="Busque por pratos ou ingredientes"
             onChange={handleSearchChange}
           />
+          
+          <div className="line">
+            <a href="#">Meus Favortitos</a>
+          </div>
 
           <div className="line">
             <a href="#" onClick={signOut}>Sair</a>

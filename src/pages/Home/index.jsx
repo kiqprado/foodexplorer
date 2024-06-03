@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../services/api'
 
-import {  SwiperSlide } from 'swiper/react'
+import { SwiperSlide } from 'swiper/react'
 import { EffectCoverflow, Navigation } from 'swiper/modules';
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'

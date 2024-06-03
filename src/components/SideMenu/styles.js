@@ -43,7 +43,10 @@ export const Header = styled.header`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3.6rem;
+
+  div:nth-child(1) {
+    margin-bottom: 3.6rem;
+  }
 
   .line {
     padding: 1rem;
