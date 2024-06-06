@@ -9,6 +9,7 @@ export const Container = styled.div`
 
   a {
     align-self: center;
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
   }
 `
 
@@ -16,7 +17,8 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
 
-  div, button {
+  div,
+  button {
     margin-bottom: 3.2rem;
   }
 `

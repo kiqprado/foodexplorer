@@ -9,6 +9,7 @@ export const Container = styled.div`
 
   a {
     align-self: center;
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
   }
 `
 
