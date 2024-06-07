@@ -42,9 +42,7 @@ async function handleNewDish() {
   if(!title) {
     alert("Os Pratos devem possuir um Nome para serem adicionados ao catalogo.")
   }
-  /*if(!category) {
-    alert("A categoria do produto deve ser informada!")
-  }*/
+  
   if(newIngredient) {
     alert("Existe um ingrediente no campo preenchido mas não adicionado a lista, adicione ou exclua o mesmo.")
   }

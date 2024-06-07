@@ -1,4 +1,5 @@
 import { useAuth } from '../../hooks/auth'
+import { useNavigate } from 'react-router-dom'
 
 import { PiX, PiMagnifyingGlass } from 'react-icons/pi'
 
@@ -11,9 +12,15 @@ import { Container, Header, Content } from './styles'
 export function SideMenu({ menuIsOpen, closeMenu, onSearch }) {
   const { signOut } = useAuth()
 
+  const navigate = useNavigate()
+
   function handleSearchChange(e) {
     const searchEvent = e.target.value
     onSearch(searchEvent)
+  }
+
+  function handleFavorites() {
+    navigate('/favorites')
   }
 
   return(
@@ -35,7 +42,7 @@ export function SideMenu({ menuIsOpen, closeMenu, onSearch }) {
           />
           
           <div className="line">
-            <a href="#">Meus Favortitos</a>
+            <a href="#" onClick={handleFavorites}>Meus Favortitos</a>
           </div>
 
           <div className="line">

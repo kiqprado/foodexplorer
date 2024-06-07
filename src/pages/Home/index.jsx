@@ -8,13 +8,13 @@ import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
 
-import { Container, Content, CardAd, CustomSwiper  } from './styles'
+import { Container, Content, CustomSwiper  } from './styles'
+
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
+import { CardsAD } from '../../components/CardsAD'
 import { Section } from '../../components/Section'
 import { DishCard } from '../../components/DishCard'
-
-import CardImg from '../../assets/CardElements.png'
 
 export function Home() {
   const [ categories, setCategories ] = useState([])
@@ -72,16 +72,10 @@ export function Home() {
       <Header setSearch={setSearch}/>
 
       <main>
-      <CardAd>
-            <img src={CardImg} alt="" />
-            <div className="about">
-              <h3>Sabores inigualáveis</h3>
-              <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
-            </div>
-          </CardAd>
+        <CardsAD/>
+            
         <Content>
           
-
           {categories.map(category => (
             <Section key={category.id} title={category.name}>
               <CustomSwiper

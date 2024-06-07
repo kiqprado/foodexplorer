@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { PiCaretLeft} from 'react-icons/pi'
 
-import { Container, Ingredients, OrderDetails } from './stytles'
+import { Container, Ingredients, OrderDetails } from './styles'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Tag } from '../../components/Tag'
