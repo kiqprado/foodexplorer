@@ -20,8 +20,6 @@ export function Dish() {
   const params = useParams();
   const navigate = useNavigate();
 
-  const dishAvatar = data && data.avatar_url ? data.avatar_url : dishPlaceholder;
-
   function handleBack() {
     navigate(-1);
   }
@@ -33,7 +31,17 @@ export function Dish() {
     }
 
     fetchDish();
-  }, []);
+  }, [params.id]);
+
+  function handleBack() {
+    navigate(-1);
+  }
+
+  if (!data) {
+    return <div>Carregando o Prato...</div>;
+  }
+
+  const dishAvatar = data.avatar ? `${api.defaults.baseURL}/files/${data.avatar}` : dishPlaceholder;
 
   return (
     <Container>

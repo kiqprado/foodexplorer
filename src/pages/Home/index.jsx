@@ -17,7 +17,7 @@ import { Section } from '../../components/Section'
 import { DishCard } from '../../components/DishCard'
 
 export function Home() {
-  const [ categories, setCategories ] = useState([])
+  const [categories, setCategories] = useState([])
 
   const [favorite, setFavorite] = useState([])
 

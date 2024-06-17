@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { api } from '../../services/api'
 
 import { PiHeart } from 'react-icons/pi'
