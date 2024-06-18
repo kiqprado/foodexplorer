@@ -5,7 +5,10 @@ import 'swiper/css/effect-coverflow'
 
 import { Container, Card } from './styles'
 
-import CardImg from '../../assets/CardElements.png'
+import CardImgOne from '../../assets/CardAd/CardElementsOne.png'
+import CardImgTwo from '../../assets/CardAd/CardElementsTwo.png'
+import CardImgThree from '../../assets/CardAd/CardElementsThree.png'
+import CardImgFour from '../../assets/CardAd/CardElementsFour.png'
 
 export function CardsAD() {
 
@@ -13,22 +16,26 @@ export function CardsAD() {
     {
       title: 'Sabores inigualáveis',
       description: 'Sinta o cuidado do preparo com ingredientes selecionados.',
-      img: CardImg,
+      img: CardImgOne,
+      className: 'one'
     },
     {
-      title: 'Sabores inigualáveis',
-      description: 'Sinta o cuidado do preparo com ingredientes selecionados.',
-      img: CardImg,
+      title: 'Detalhes',
+      description: 'O sabor que nos traz boas lembranças.',
+      img: CardImgTwo,
+      className: 'two'
     },
     {
-      title: 'Sabores inigualáveis',
-      description: 'Sinta o cuidado do preparo com ingredientes selecionados.',
-      img: CardImg,
+      title: 'Da colheita à Mesa',
+      description: 'A riqueza em cada instante.',
+      img: CardImgThree,
+      className: 'three'
     },
     {
-      title: 'Sabores inigualáveis',
-      description: 'Sinta o cuidado do preparo com ingredientes selecionados.',
-      img: CardImg,
+      title: 'Em poucos cliques',
+      description: 'A pausa perfeita na correria do dia!',
+      img: CardImgFour,
+      className: 'four'
     },
   ]
 
@@ -54,11 +61,11 @@ export function CardsAD() {
       >
         {cards.map((card, index) => (
           <SwiperSlide key={index}>
-            <Card>
+            <Card className={card.className}>
               <img src={card.img} alt="" />
               <div className="about">
                 <h3>{card.title}</h3>
-                <p>{card.description}</p>
+                <p>{card.description}</p> 
               </div>
             </Card>
           </SwiperSlide>
