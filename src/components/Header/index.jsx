@@ -7,7 +7,7 @@ import { ButtonIcon } from '../ButtonIcon'
 import { SideMenu } from '../SideMenu'
 import { OrderClient } from '../OrderClient';
 
-import { Container } from './styles'
+import { Container, OrderSection } from './styles'
 
 export function Header({ setSearch }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -42,11 +42,16 @@ export function Header({ setSearch }) {
         orderIsOpen={isOrderOpen}
         closeOrder={() => setIsOrderOpen(false)}
       />
+      
+      <OrderSection>
+        <span>01</span>
 
-      <ButtonIcon
-        onClick={toggleOrder}
-        icon={PiReceipt}
-      />
+        <ButtonIcon
+          onClick={toggleOrder}
+          icon={PiReceipt}
+        />
+
+      </OrderSection>
       
     </Container>
   )

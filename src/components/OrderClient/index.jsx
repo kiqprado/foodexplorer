@@ -2,7 +2,7 @@
 import { ButtonIcon } from '../ButtonIcon'
 import { Logo } from '../Logo'
 import { Section } from '../Section'
-import { DishCardOrder } from '../DIshCardOrder'
+import { DishCardTemplate } from '../DishCardTemplate'
 import { Button } from '../Button'
 import { Footer } from '../Footer'
 
@@ -28,12 +28,16 @@ export function OrderClient({ orderIsOpen, closeOrder }) {
       <Section
         title="Meu Pedido"
       >
-        <DishCardOrder/>
-        <DishCardOrder/>
-        <DishCardOrder/>
-        <DishCardOrder/>
-        <DishCardOrder/>
-        <DishCardOrder/>
+        <DishCardTemplate
+          onOrder
+        />
+        <DishCardTemplate
+          onOrder
+        />
+        <DishCardTemplate/>
+        <DishCardTemplate/>
+        <DishCardTemplate/>
+        <DishCardTemplate/>
 
         <h4>Total: R$ 103,34</h4>
       </Section>

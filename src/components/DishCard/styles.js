@@ -5,7 +5,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 1.2rem;
 
   border: 1px solid ${({ theme }) => theme.COLORS.DARK_100};
@@ -13,7 +12,6 @@ export const Container = styled.div`
   position: relative;
 
   width: 21rem;
-  height: 29.2rem;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_200};
 
@@ -26,6 +24,14 @@ export const Container = styled.div`
   > :last-child {
     margin-top: 0.6rem;
   }
+`
+
+export const Details = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
 
   > img {
     width: 12rem;

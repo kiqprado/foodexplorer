@@ -19,23 +19,10 @@ import { DishCard } from '../../components/DishCard'
 export function Home() {
   const [categories, setCategories] = useState([])
 
-  const [favorite, setFavorite] = useState([])
-
   const [ search, setSearch ] = useState("")
   const [dishesByCategory, setDishesByCategory] = useState({})
 
   const navigate = useNavigate()
-
-  /*function handleFavoritesList(newFavorite) {
-    const alreadyFavorite = favorite.includes(newFavorite)
-
-    if (alreadyFavorite) {
-      const filteredFavorite = newFavorite.filter(fav => fav !== newFavorite)
-      setFavorite(filteredFavorite)
-    }else {
-    setFavorite(prevState => [...prevState, newFavorite])
-    }
-  }*/
 
   function handleDetails(id) {
     navigate(`/details/${id}`)
@@ -66,6 +53,7 @@ export function Home() {
       fetchDishes()
     }
   }, [search, categories])
+
 
   return(
     <Container>
@@ -99,7 +87,7 @@ export function Home() {
                     <DishCard
                       key={String(dish.id)}
                       data={dish}
-                      onClick={() => handleDetails(dish.id)}
+                      onDetailsClick={() => handleDetails(dish.id)}
                     />
                   </SwiperSlide>
                 ))}
