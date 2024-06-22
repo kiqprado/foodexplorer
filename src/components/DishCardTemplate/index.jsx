@@ -2,7 +2,7 @@ import { Container, Details, Link } from './styles'
 
 import DishImg from '../../assets/dish.png'
 
-export function DishCardTemplate({ data, onOrder, ...rest}) {
+export function DishCardTemplate({ data, onOrder, addItem, ...rest}) {
   return(
     <Container {...rest}>
       <img src={DishImg} alt="Dish Image" />

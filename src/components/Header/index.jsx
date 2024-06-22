@@ -1,24 +1,28 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { PiReceipt, PiList } from "react-icons/pi";
 
 import { Logo } from '../Logo'
 import { ButtonIcon } from '../ButtonIcon'
 import { SideMenu } from '../SideMenu'
-import { OrderClient } from '../OrderClient';
+import { OrderHistory } from '../OrderHistory';
 
 import { Container, OrderSection } from './styles'
 
-export function Header({ setSearch }) {
+export function Header({ setSearch, itemCount, orderItems }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isOrderOpen, setIsOrderOpen] = useState(false)
 
-  const toggleMenu = () => {
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false)
+
+  const navigate = useNavigate()
+
+  function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
   }
 
-  const toggleOrder = () => {
-    setIsOrderOpen(!isOrderOpen);
+  function handleClientOrder() {
+    navigate('/order', { state: { itemCount, orderItems } })
   }
 
   return(
@@ -38,16 +42,17 @@ export function Header({ setSearch }) {
         size={22}
       />
 
-      <OrderClient
-        orderIsOpen={isOrderOpen}
-        closeOrder={() => setIsOrderOpen(false)}
-      />
-      
       <OrderSection>
-        <span>01</span>
+
+        <OrderHistory
+          historyIsOpen={isHistoryOpen}
+          closeHistory={() => setIsHistoryOpen(false)}
+        />
+      
+        <span>{String(itemCount).padStart(2, '0')}</span>
 
         <ButtonIcon
-          onClick={toggleOrder}
+          onClick={handleClientOrder}
           icon={PiReceipt}
         />
 

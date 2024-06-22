@@ -22,10 +22,18 @@ export function Home() {
   const [ search, setSearch ] = useState("")
   const [dishesByCategory, setDishesByCategory] = useState({})
 
+  const [itemCount, setItemCount] = useState(0)
+  const [orderItems, setOrderItems] = useState([])
+
   const navigate = useNavigate()
 
   function handleDetails(id) {
     navigate(`/details/${id}`)
+  }
+
+  function handleAddItem(dish, quantity) {
+    setItemCount(prevCount => prevCount + quantity)
+    setOrderItems(prevItems => [...prevItems, ...Array(quantity).fill(dish)])
   }
 
   useEffect(() => {
@@ -57,7 +65,12 @@ export function Home() {
 
   return(
     <Container>
-      <Header setSearch={setSearch}/>
+      <Header 
+        setSearch={setSearch} 
+        itemCount={itemCount} 
+        setItemCount={setItemCount}
+        orderItems={orderItems} 
+      />
 
       <main>
         <CardsAD/>
@@ -87,6 +100,7 @@ export function Home() {
                     <DishCard
                       key={String(dish.id)}
                       data={dish}
+                      addItem={(quantity) =>  handleAddItem(dish, quantity)}
                       onDetailsClick={() => handleDetails(dish.id)}
                     />
                   </SwiperSlide>

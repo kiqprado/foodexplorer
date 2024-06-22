@@ -5,6 +5,7 @@ import { Home } from '../pages/Home'
 import { NewDish } from '../pages/NewDish'
 import { EditDish } from '../pages/EditDish'
 import { Favorites } from '../pages/Favorites'
+import { Order } from '../pages/Order'
 
 export function AppRoutes() {
   return(
@@ -14,6 +15,7 @@ export function AppRoutes() {
       <Route path='/new' element={<NewDish/>} />
       <Route path='/edit' element={<EditDish/>} />
       <Route path='/favorites' element={<Favorites/>} />
+      <Route path='/order' element={<Order/>} />
     </Routes>
   )
 }

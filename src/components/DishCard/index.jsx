@@ -14,8 +14,9 @@ import { ButtonIcon } from '../../components/ButtonIcon'
 import dishPlaceholder from '../../assets/dishPlaceholder.svg'
 
 
-export function DishCard({ data, onDetailsClick, ...rest}) {
+export function DishCard({ data, onDetailsClick, addItem, ...rest}) {
   const [ favorite, setIsFavorite] = useState(false)
+  const [quantity, setQuantity] = useState(1)
 
   const { user } = useAuth()
   
@@ -24,12 +25,17 @@ export function DishCard({ data, onDetailsClick, ...rest}) {
   async function handleNewFavorite() {
     try {
       await api.post("/favorites", {
-        dish_id: data.id    
+        dish_id: data.id,
+        user_id: user.id
       });
       setIsFavorite(!favorite);
     } catch (error) {
       console.error("Erro ao adicionar aos favoritos:", error);
     }
+  }
+
+  function handleAddDishToOrder() {
+    addItem(quantity)
   }
 
   return(
@@ -49,10 +55,14 @@ export function DishCard({ data, onDetailsClick, ...rest}) {
         <span>R$ {data.price}</span>
       </Details>
       
-      <Quantity/>
+      <Quantity
+        quantity={quantity} 
+        setQuantity={setQuantity}
+      />
 
       <Button
         title="incluir"
+        onClick={handleAddDishToOrder}
       />
     </Container>
   )
