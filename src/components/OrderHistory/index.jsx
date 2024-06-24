@@ -1,30 +1,24 @@
+import { Container } from './styles'
 
-
-import { ButtonIcon } from '../ButtonIcon'
-import { Logo } from '../Logo'
-import { Section } from '../Section'
-import { Footer } from '../Footer'
-
-import { PiX } from 'react-icons/pi'
-
-import { Container, Header } from './styles'
-
-export function OrderHistory({ historyIsOpen, closeHistory }) {
+export function OrderHistory() {
   return(
-    <Container data-history-is-open={historyIsOpen}>
-      <Header>
-        <Logo size={22} />
-        
-        <ButtonIcon onClick={closeHistory} icon={PiX} />
-      </Header>
+    <Container>
+      <div className="detailsORderHistory">
+      
+        <span>000004</span>
 
-      <main>
-        <Section title="Histórico de Pedidos">
-          {/* Aqui você pode mapear e renderizar os pedidos históricos */}
-        </Section>
-      </main>
+        <div className="status">
+          <span className='statusColor'></span>
+          <h5>Pendente</h5>
+        </div>
 
-      <Footer />
+        <div className="dateTime">
+          <span>20/05 às 18h00</span>
+        </div>
+
+      </div>
+
+      <p>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</p>
     </Container>
   )
 }

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { PiCaretLeft} from 'react-icons/pi'
 
 import { Container, Ingredients, OrderDetails } from './styles'
+
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Tag } from '../../components/Tag'
@@ -20,22 +21,18 @@ export function Dish() {
   const params = useParams();
   const navigate = useNavigate();
 
-  function handleBack() {
-    navigate(-1);
-  }
-
   useEffect(() => {
     async function fetchDish() {
       const response = await api.get(`/dishes/${params.id}`);
       setData(response.data);
     }
 
+    function handleBack() {
+      navigate(-1);
+    }
+
     fetchDish();
   }, [params.id]);
-
-  function handleBack() {
-    navigate(-1);
-  }
 
   if (!data) {
     return <div>Carregando o Prato...</div>;
@@ -46,6 +43,7 @@ export function Dish() {
   return (
     <Container>
       <Header />
+
       {
         data &&
         <main>
@@ -74,6 +72,7 @@ export function Dish() {
           </OrderDetails>
         </main>
       }
+      
       <Footer/>
     </Container>
   );
