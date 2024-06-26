@@ -1,104 +1,191 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { api } from '../../services/api'
 
-import { PiUploadSimple } from 'react-icons/pi'
-import { Container, Form, StuffTags, Edit } from './styles'
+import { PiCaretDown, PiCaretLeft} from 'react-icons/pi'
 
 import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
 import { Input } from '../../components/Input'
+import { InputImg } from '../../components/InputImg'
 import { InputLabel } from '../../components/InputLabel'
+import { InputSelect } from '../../components/InputSelect'
 import { DishStuff } from '../../components/DishStuff'
 import { Textarea } from '../../components/Textarea'
 import { Button } from '../../components/Button'
 
+import { Container, Form, StuffTags, Action } from './styles'
+
 export function EditDish() {
+  const [ avatar, setAvatar] = useState(null)
+
+  const [ title, setTitle ] = useState("")
+  const [ category, setCategory ] = useState("")
+
+  const [ ingredients, setIngredients ] = useState([])
+  const [ newIngredient, setNewIngredient ] = useState("")
+
+  const [ price, setPrice ] = useState("")
+  const [ description, setDescription ] = useState("")
+
+  const navigate = useNavigate()
+
+  function handleAddIngredient() {
+    setIngredients(prevState => [...prevState, newIngredient])
+    setNewIngredient("")
+  }
+
+  function handleRemoveIngredient(deleted) {
+    setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted))
+  }
+
+async function handleNewDish() {
+  if(!title) {
+    alert("Os Pratos devem possuir um Nome para serem adicionados ao catalogo.")
+  }
+  
+  if(newIngredient) {
+    alert("Existe um ingrediente no campo preenchido mas não adicionado a lista, adicione ou exclua o mesmo.")
+  }
+  if(!price) {
+    alert("Informe o valor do seu Prato.")
+  }
+
+  if(avatar) {
+    const fileUploadForm = new FormData()
+    fileUploadForm.append('avatar', avatar)
+
+    const response = await api.patch('/dishes/avatar', fileUploadForm)
+    const avatarFilename = response.data.filename
+
+    await api.post("/dishes", {
+      title,
+      category_name: category,
+      ingredients,
+      price,
+      description,
+      avatar: avatarFilename
+    })
+
+    alert("Prato cadastrado com sucesso!")
+    navigate('/')
+  }
+}
+
   return(
     <Container>
       <Header/>
-      <main>  
-      <Form>
+      
+      <main> 
         <Link to="/">
-          &lt; voltar
-        </Link>
+           <PiCaretLeft/> voltar
+        </Link> 
+        <Form>  
 
-        <h2>Novo Prato</h2>
+          <h2>Novo Prato</h2>
 
-        <InputLabel
-          title="Imagem do Prato"
-          htmlFor="chooseFile"
-        />
-        <Input
-          id="chooseFile"
-          type="file"
-          icon={PiUploadSimple}
-          placeholder="Selecionar imagem"
-        />
-
-        <InputLabel
-          title="Nome"
-          htmlFor="dishName"
-        />
-        <Input
-          id="dishName"
-          type="text"
-          placeholder="Ex: Salada Ceasar"
-        />
-
-        <InputLabel
-          title="Categoria"
-          htmlFor="dishCategory"
-        />
-        <Input
-          id="dishCategory"
-          type="text"
-          placeholder="Ex: Salada Ceasar"
-        />
-
-        <InputLabel
-          title="Ingredientes"
-        />
-        <StuffTags>
-          <DishStuff
-            value="Sal"
+          <div className="inputs">
+          <InputLabel
+            title="Imagem do prato"
+            htmlFor="dishName"
           />
-
-          <DishStuff
-            isNew
-            placeholder="Ain Zé da MANGA"
+          <InputImg
+            title="Selecione a imagem para altera-lá"
+            onChange={e => setAvatar(e.target.files[0])}
           />
-        </StuffTags>
+          </div>
 
-        <InputLabel
-          title="Preço"
-          htmlFor="dishPrice"
-        />
-        <Input
-          id="dishPrice"
-          type="number"
-          placeholder="R$: 49,90"
-        />
-
-        <InputLabel
-          title="Descrição"
-          htmlFor="dishDescription"
-        />
-        <Textarea
-          id="dishDescription"
-          placeholder="Fale brevemente sobre o prato, seus ingredientes e composição..."
-        />
-
-        <Edit>
-          <Button
-            title="Ecluir Prato"
+          <div className="inputs">
+          <InputLabel
+            title="Nome"
+            htmlFor="dishTitle"
           />
-
-          <Button
-            title="Salvar alterações"
+          <Input
+            id="dishTitle"
+            type="text"
+            placeholder="Salada Ceasar"
+            onChange={e => setTitle(e.target.value)}
           />
-        </Edit>
-        
+          </div>
+
+          <div className="inputs">
+          <InputLabel
+            title="Categoria"
+            htmlFor="dishCategory"
+          />
+          <InputSelect
+            id="dishCategory"
+            type="text"
+            icon={PiCaretDown}
+            onChange={e => setCategory(e.target.value)}
+          />
+          </div>
+
+          <div className="inputs">
+          <InputLabel
+            title="Ingredientes"
+          />
+          <StuffTags>
+            {
+              ingredients.map((ingredient, index) => (
+                <DishStuff
+                  key={String(index)}
+                  value={ingredient}
+                  onClick={() => handleRemoveIngredient(ingredient)}
+                />
+              ))
+            }
+
+            <DishStuff
+              isNew
+              placeholder="Adicionar"
+              value={newIngredient}
+              onChange={e => setNewIngredient(e.target.value)}
+              onClick={handleAddIngredient}
+            />
+          </StuffTags>
+          </div>
+
+          <div className="inputs">
+          <InputLabel
+            title="Preço"
+            htmlFor="dishPrice"
+          />
+          <Input
+            id="dishPrice"
+            type="number"
+            placeholder="R$ 99,99"
+            onChange={e => setPrice(e.target.value)}
+          />
+          </div>
+
+          <div className="inputs">
+          <InputLabel
+            title="Descrição"
+            htmlFor="dishDescription"
+          />
+          <Textarea
+            id="dishDescription"
+            placeholder="A Salada César é uma opção refrescante para o verão."
+            onChange={e => setDescription(e.target.value)}
+          />
+          </div>
+          
+          <Action>
+            <Button
+              title="Excluir prato"
+            />
+
+            <Button
+              title="Salvar alterações"
+              onClick={handleNewDish}
+            />
+          </Action>
+          
       </Form>
       </main>
-      
+
+      <Footer/>
     </Container>
   )
 }

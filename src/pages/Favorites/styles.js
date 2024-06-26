@@ -9,8 +9,10 @@ export const Container = styled.div`
     'footer';
 
   main {
-    padding: 3.6rem 2.8rem;
     grid-area: content;
+
+    padding: 3.6rem 2.8rem;
+    
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
     h4 {
