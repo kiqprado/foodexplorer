@@ -102,6 +102,10 @@ export const Card = styled.div`
 
     .about {
       margin-left: 1.6rem;
+
+      p {
+        max-width: 18.6rem;
+      }
     }
   }
 `

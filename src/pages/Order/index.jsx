@@ -30,7 +30,7 @@ export function Order() {
               {orderItems.map((item, index) => (
                 <DishCardTemplate key={index} data={item} onOrder />
               ))}
-              <h4>Total: R$ 103,34</h4>
+              <h4>Total R$ {orderItems.reduce((total, item) => total + item.price, 0).toFixed(2)}</h4>
               <Button title="Avançar" />
             </>
           ) : (

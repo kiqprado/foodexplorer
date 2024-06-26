@@ -27,13 +27,13 @@ export function CardsAD() {
     },
     {
       title: 'Da colheita à Mesa',
-      description: 'A riqueza em cada instante.',
+      description: 'Respeito e gratidão com a sua alimentação.',
       img: CardImgThree,
       className: 'three'
     },
     {
       title: 'Em poucos cliques',
-      description: 'A pausa perfeita na correria do dia!',
+      description: 'A sua pausa perfeita na correria do dia-a-dia!',
       img: CardImgFour,
       className: 'four'
     },

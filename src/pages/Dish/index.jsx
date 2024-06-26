@@ -18,8 +18,18 @@ import dishPlaceholder from '../../assets/dishPlaceholder.svg'
 export function Dish() {
   const [data, setData] = useState(null);
 
+  const [quantity, setQuantity] = useState(1)
+
+  const [itemCount, setItemCount] = useState(0)
+  const [orderItems, setOrderItems] = useState([])
+
   const params = useParams();
   const navigate = useNavigate();
+
+  function handleAddItem(dish, quantity) {
+    setItemCount(prevCount => prevCount + quantity)
+    setOrderItems(prevItems => [...prevItems, ...Array(quantity).fill(dish)])
+  }
 
   useEffect(() => {
     async function fetchDish() {
@@ -42,7 +52,11 @@ export function Dish() {
 
   return (
     <Container>
-      <Header />
+      <Header 
+      itemCount={itemCount} 
+      setItemCount={setItemCount}
+      orderItems={orderItems}  
+      />
 
       {
         data &&
@@ -65,9 +79,13 @@ export function Dish() {
           }
           
           <OrderDetails>
-            <Quantity/>
+            <Quantity
+              quantity={quantity} 
+              setQuantity={setQuantity}
+            />
             <Button
               title="Pedir"
+              onClick={handleAddItem}
             />
           </OrderDetails>
         </main>
